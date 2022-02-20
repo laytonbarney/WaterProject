@@ -29,6 +29,7 @@ namespace WaterProject.Pages
             Project p = repo.Projects.FirstOrDefault(x => x.ProjectId == projectId);
             basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
             basket.AddItem(p, 1);
+            
             HttpContext.Session.SetJson("basket", basket);
             return RedirectToPage(new { ReturnUrl = returnUrl });
         }
